@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+tf_env/
+
+# Dataset (IMPORTANT)
+data/
+
+# Models (large files)
+*.keras
+*.h5
+
+# OS files
+.DS_Store
+Thumbs.db
