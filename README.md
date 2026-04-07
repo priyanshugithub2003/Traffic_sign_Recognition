@@ -1,160 +1,174 @@
-# Traffic Sign Recognition
+# Traffic Sign Recognition (Deep Learning, ~99% Accuracy)
 
-Traffic Sign Recognition is a deep learning-based system that identifies and classifies traffic signs such as speed limits, stop signs, and turn directions. This is useful in autonomous driving systems and driver assistance applications.
+A convolutional neural network (CNN)-based system for classifying traffic signs into 43 categories using the GTSRB dataset. The project includes a full training pipeline and a GUI for real-time predictions.
 
 ---
 
 ## Features
 
-- Classifies 43 traffic sign categories
-- CNN-based image classification
-- Training and testing pipeline
-- GUI for predictions
-- Uses GTSRB dataset
+* 43-class traffic sign classification
+* CNN-based deep learning model (TensorFlow/Keras)
+* End-to-end pipeline: preprocessing → training → evaluation
+* GUI for real-time image prediction
+* High performance with fast convergence
 
 ---
 
-## Important Requirement
+## Results
 
-### Python Version
+### Training vs Validation Loss
 
-This project uses TensorFlow.
+![Loss](results/loss.png)
 
-Python 3.13 is not supported.
+### Training vs Validation Accuracy
 
-Supported versions:
-- Python 3.9 to 3.12
+![Accuracy](results/accuracy.png)
 
-Recommended:
-- Python 3.10 or 3.11
+### Performance Summary
 
----
+* Validation Accuracy: **~98.5–99%**
+* Training Accuracy: **~95–96%**
+* Validation Loss: **~0.05–0.08**
+* Training Loss: **~0.18–0.22**
 
-## Setup
+### Observations
 
-### 1. Install Python 3.11
-```bash
-winget install Python.Python.3.11
-```
----
+* Rapid convergence within first **5–10 epochs**
+* Minimal overfitting (stable validation curves)
+* Strong generalization performance
 
-### 2. Create Virtual Environment
-```bash
-py -3.11 -m venv tf_env
-tf_env\Scripts\Activate
-```
----
-
-### 3. Install Dependencies
-```bash
-pip install --upgrade pip
-pip install tensorflow numpy pandas matplotlib opencv-python pillow scikit-learn
-```
 ---
 
 ## Project Structure
 
 ```
-Traffic sign classification/
+Traffic_sign_classification/
 │
-├── Train/ # Training images (0–42 folders)
-├── Test/ # Test images
-├── Meta/ # Metadata images
+├── src/
+│   ├── train.py          # Model training script
+│   ├── gui.py            # GUI for predictions
 │
-├── Train.csv # Training labels
-├── Test.csv # Test labels
-├── Meta.csv # Metadata
+├── models/               # Saved models (optional / ignored if large)
+├── data/                 # Dataset (NOT included in repo)
 │
-├── traffic_sign.py # Training script
-├── gui.py # GUI application
+├── assets/               # Images for README
 │
-├── my_model.keras # Saved model
-├── traffic_classifier.keras
+├── requirements.txt
+├── README.md
+├── .gitignore
 ```
+
+---
+
+## Setup Instructions
+
+### 1. Install Python
+
+Recommended version: **Python 3.10 or 3.11**
+
+```bash
+winget install Python.Python.3.11
+```
+
+---
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/priyanshugithub2003/Traffic_sign_Recognition.git
+cd "Traffic_sign_Recognition"
+```
+
+---
+
+### 3. Create Virtual Environment
+
+```bash
+py -3.11 -m venv tf_env
+tf_env\Scripts\activate
+```
+
+---
+
+### 4. Install Dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+---
+
+## Dataset Setup
+
+Download the GTSRB dataset:
+
+https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign
+
+After downloading, place files as:
+
+```
+data/
+├── Train/
+├── Test/
+├── Meta/
+├── Train.csv
+├── Test.csv
+├── Meta.csv
+```
+
 ---
 
 ## Usage
 
 ### Train the Model
+
 ```bash
-python traffic_sign.py
+python src/train.py
 ```
 
 This will:
-- Load training data
-- Train the model
-- Save the model
-- Evaluate accuracy
+
+* Load dataset from `data/`
+* Train CNN model
+* Save trained model in `models/`
+* Output accuracy and loss metrics
 
 ---
 
 ### Run GUI for Prediction
+
 ```bash
-python gui.py
+python src/gui.py
 ```
 
 Steps:
-- Upload an image
-- Click predict
-- View result
+
+1. Upload an image
+2. Click **Classify Image**
+3. View predicted traffic sign
 
 ---
 
-### Run Only Testing (Optional)
+## Model Details
 
-Modify your script:
-```bash
-from tensorflow.keras.models import load_model
-model = load_model("my_model.keras")
-```
-
----
-
-## Working
-
-- Images are loaded from:
-Train/<class_id>/
-
-- Each folder corresponds to a class (0 to 42)
-
-- Test data:
-  - Path -> image location
-  - ClassId -> correct label
+* Architecture: Convolutional Neural Network (CNN)
+* Framework: TensorFlow / Keras
+* Input: Traffic sign images
+* Output: 43-class classification
 
 ---
 
-### Wrong Python in VS Code
+## Workflow
 
-Fix: Ctrl + Shift + P → Python: Select Interpreter → tf_env
-
----
-
-## Recommended Workflow
-
-1. Install Python 3.11
-2. Create virtual environment
-3. Install dependencies
-4. Train model once
-5. Use GUI for predictions
-
----
-
-## Dataset
-
-German Traffic Sign Recognition Benchmark (GTSRB):
-https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign
-
----
-
-## Improvements
-
-- Data augmentation
-- Model checkpointing
-- Separate train/test scripts
-- Support for PyTorch (Python 3.13)
+1. Clone repository
+2. Setup environment
+3. Download dataset
+4. Train model
+5. Run GUI
 
 ---
 
 ## License
 
-For educational use only.
+This project is for educational and research purposes.

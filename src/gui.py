@@ -9,8 +9,8 @@ import numpy
 #load the trained model to classify sign
 from keras.models import load_model
 
-os.chdir("Traffic sign classification")
-model = load_model('traffic_classifier.keras')
+os.chdir("Traffic_sign_classification")
+model = load_model('models\\traffic_classifier.keras')
 
 #dictionary to label all traffic signs class.
 classes = { 1:'Speed limit (20km/h)',

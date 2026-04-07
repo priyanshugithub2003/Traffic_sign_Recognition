@@ -10,7 +10,7 @@ from tensorflow.keras.utils import to_categorical # type: ignore
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Conv2D, MaxPool2D, Dense, Flatten, Dropout
 
-os.chdir("Traffic sign classification")
+os.chdir("Traffic_sign_classification")
 
 data = []
 labels = []
@@ -19,7 +19,7 @@ cur_path = os.getcwd()
 
 #Retrieving the images and their labels 
 for i in range(classes):
-    path = os.path.join(cur_path,'train',str(i))
+    path = os.path.join(cur_path,'data\\train',str(i))
     images = os.listdir(path)
 
     for a in images:
@@ -67,7 +67,7 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 epochs = 15
 history = model.fit(X_train, y_train, batch_size=32, epochs=epochs, validation_data=(X_test, y_test))
-model.save("my_model.keras")
+model.save("models\\my_model.keras")
 
 #plotting graphs for accuracy 
 plt.figure(0)
@@ -91,7 +91,7 @@ plt.show()
 #testing accuracy on test dataset
 from sklearn.metrics import accuracy_score
 
-y_test = pd.read_csv('Test.csv')
+y_test = pd.read_csv('data\\Test.csv')
 
 labels = y_test["ClassId"].values
 imgs = y_test["Path"].values
@@ -99,7 +99,7 @@ imgs = y_test["Path"].values
 data=[]
 
 for img in imgs:
-    image = Image.open(img)
+    image = Image.open('data\\' + img)
     image = image.resize((30,30))
     data.append(np.array(image))
 
@@ -110,4 +110,4 @@ pred_class = np.argmax(pred, axis=1)
 #Accuracy with the test data
 from sklearn.metrics import accuracy_score
 print(accuracy_score(labels, pred_class))
-model.save('traffic_classifier.keras')
+model.save('models\\traffic_classifier.keras')
