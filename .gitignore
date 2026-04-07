@@ -7,7 +7,7 @@ venv/
 tf_env/
 
 # Dataset (IMPORTANT)
-data/
+#data/
 
 # Models (large files)
 *.keras
