@@ -18,11 +18,11 @@ A convolutional neural network (CNN)-based system for classifying traffic signs 
 
 ### Training vs Validation Loss
 
-![Loss](results/loss.png)
+![Loss](results/Loss.png)
 
 ### Training vs Validation Accuracy
 
-![Accuracy](results/accuracy.png)
+![Accuracy](results/Accuracy.png)
 
 ### Performance Summary
 
@@ -48,10 +48,24 @@ Traffic_sign_classification/
 │   ├── train.py          # Model training script
 │   ├── gui.py            # GUI for predictions
 │
-├── models/               # Saved models (optional / ignored if large)
-├── data/                 # Dataset (NOT included in repo)
+├── models/               # Saved models 
+│   ├── my_model.keras    
+│   ├── traffic_classifier.keras    
+|
+├── data/                 
+│   ├── Meta
+|   │   ├──        # images and info
+│   ├── Test
+|   │   ├──        # images
+│   ├── Train  
+|   │   ├──        # images
+│   ├── Meta.csv  
+│   ├── Test.csv  
+│   ├── Train.csv  
 │
-├── assets/               # Images for README
+├── results/               # Images for README
+│   ├── Accuracy.png  
+│   ├── Loss.png  
 │
 ├── requirements.txt
 ├── README.md
