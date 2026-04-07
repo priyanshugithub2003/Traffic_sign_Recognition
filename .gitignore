@@ -6,12 +6,12 @@ __pycache__/
 venv/
 tf_env/
 
-# Dataset (IMPORTANT)
-#data/
+# Dataset and models can be written here to avoid pushing large files to the repository
+# data/
 
 # Models (large files)
-*.keras
-*.h5
+# *.keras
+# *.h5
 
 # OS files
 .DS_Store
